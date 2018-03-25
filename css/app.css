@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,8 +14,21 @@ body {
 
 body {
     font-family: 'Coda', cursive;
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
 }
 
 ol, ul {
     list-style: none;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

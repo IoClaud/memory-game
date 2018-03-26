@@ -37,6 +37,7 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 /******************************
@@ -135,9 +136,9 @@ h1 {
     transition: all 0.2s ease-out;
 }
 
-/*
+/****************************
  * Styles for the Score Panel
- */
+ ****************************/
 
 .score-panel {
     text-align: left;
@@ -178,6 +179,33 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/****************************
+ * Styles for the Modal-Panel
+ ****************************/
+
+ .modal-container {
+     position: absolute;
+     width: 100vw;
+     height: 100vh;
+     top: 0;
+     left: 0;
+     background: rgba(0,0,0,0.5);
+ }
+
+ .modal-panel {
+     position: absolute;
+     max-width: 600px;
+     width: 100%;
+     min-height: 500px;
+     border-radius: 10px;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     background: white;
+     /*materializecss.com/cards.html*/
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3), 0 0 2px rgba(0, 0, 0, 0.4)
+ }
 
 /************
  * Animation

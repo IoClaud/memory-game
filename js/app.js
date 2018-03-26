@@ -90,7 +90,8 @@ let arr_cards = [];
 
  drawer(arr2);
 
- 
+ const cards = document.querySelectorAll('.card');
+ console.log (cards);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -101,3 +102,52 @@ let arr_cards = [];
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ let openCard = [];
+ let matchedCard = [];
+ for ( const card of cards){
+     card.addEventListener('click', function(e){
+         if(!(this.classList.contains('match'))){
+             if(!(this.classList.contains('open'))){
+                 //console.log('non contiene matched');
+                 //console.log('was close');
+                 this.classList.add('picked');
+                 this.classList.add('open');
+                 openCard.push(this);
+                 //console.log(openCard);
+                 if(openCard.length===2){
+                     if(openCard[0].getAttribute('data-card')===openCard[1].getAttribute('data-card')) {
+                         //console.log('match');
+                         for (const card of openCard) {
+                             card.classList.remove('picked');
+                             card.classList.add('match')
+                             matchedCard.push(this);
+                         }
+                         openCard = [];
+                     } else {
+                             //console.log('unmatched');
+                             closeAll();
+                     }
+
+                     if(matchedCard.length === 16) {
+                         console.log('winner');
+                     }
+                 }
+             }
+         }
+         //let closeCard;
+         function closeAll() {
+        let closeCard = setTimeout(close, 500);
+         }
+
+         function close() {
+             //console.log('is in close');
+             //console.log(openCard);
+             for (const card of openCard){
+                 card.classList.remove('picked');
+                 card.classList.remove('open');
+             };
+             openCard = [];
+         }
+ });
+ }

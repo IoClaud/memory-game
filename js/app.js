@@ -106,9 +106,12 @@ let arr_cards = [];
  let openCard = [];
  let matchedCard = [];
  for ( const card of cards){
+     card.addEventListener('click', startTimer);
+     card.addEventListener('click', move);
      card.addEventListener('click', function(e){
          if(!(this.classList.contains('match'))){
              if(!(this.classList.contains('open'))){
+
                  //console.log('non contiene matched');
                  //console.log('was close');
                  this.classList.add('picked');
@@ -140,6 +143,7 @@ let arr_cards = [];
 
                      if(matchedCard.length === 16) {
                          console.log('winner');
+                         stopTimer()
                      }
                  }
              }
@@ -162,4 +166,68 @@ let arr_cards = [];
              openCard = [];
          }
  });
+ }
+
+ let t=1,
+ m = 0,
+ s=-1,
+ time,
+ moved=0,
+ count=0;
+
+ function startTimer(){
+     time = setInterval(function(){
+         //console.log(t);
+         if(t%60 === 0){
+             m++;
+             document.getElementById('timerM').innerHTML = m;
+         };
+         timer();
+     }, 1000);
+ }
+
+ function timer() {
+     if(t<60){
+         s = t;
+     } else {
+         s = t - 60*m;
+     }
+     document.getElementById('timerS').innerHTML = s;
+     t++;
+     if(s>=0){
+         for (card of cards){
+             card.removeEventListener('click', startTimer);
+         }
+     }
+ }
+
+ function stopTimer() {
+     console.log('stopped');
+     switch(true){
+         case (t>=0 && t<=22):
+             console.log('Great');
+             break;
+         case (t>22 && t<=36):
+             console.log('Good');
+             break;
+         case (t>36 && t<=54):
+             console.log('Ok');
+             break;
+         case (t>54 && t<=78):
+             console.log('Bah');
+             break;
+         default:
+             console.log('Go out!');
+     }
+     clearInterval(time);
+ }
+
+ function move(){
+     count++;
+     console.log(count);
+     if(count === 2){
+         count = 0;
+         moved ++;
+         document.querySelector('#moved').innerHTML = moved;
+     }
  }

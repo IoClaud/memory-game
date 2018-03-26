@@ -92,16 +92,6 @@ let arr_cards = [];
 
  const cards = document.querySelectorAll('.card');
  console.log (cards);
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
  let openCard = [];
  let matchedCard = [];
@@ -111,8 +101,6 @@ let arr_cards = [];
      card.addEventListener('click', function(e){
          if(!(this.classList.contains('match'))){
              if(!(this.classList.contains('open'))){
-
-                 //console.log('non contiene matched');
                  //console.log('was close');
                  this.classList.add('picked');
                  this.classList.add('open');
@@ -148,14 +136,11 @@ let arr_cards = [];
                  }
              }
          }
-         //let closeCard;
          function closeAll() {
         let closeCard = setTimeout(close, 500);
          }
 
          function close() {
-             //console.log('is in close');
-             //console.log(openCard);
              for (const card of openCard){
                  card.classList.remove('picked');
                  card.classList.remove('open');
@@ -167,6 +152,10 @@ let arr_cards = [];
          }
  });
  }
+
+ /*
+  * Timer and Moves
+  */
 
  let t=1,
  m = 0,
@@ -184,6 +173,9 @@ let arr_cards = [];
          };
          timer();
      }, 1000);
+     for(card of cards){
+         card.removeEventListener('click', startTimer);
+     }
  }
 
  function timer() {
@@ -194,11 +186,6 @@ let arr_cards = [];
      }
      document.getElementById('timerS').innerHTML = s;
      t++;
-     if(s>=0){
-         for (card of cards){
-             card.removeEventListener('click', startTimer);
-         }
-     }
  }
 
  function stopTimer() {

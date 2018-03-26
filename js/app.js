@@ -162,7 +162,9 @@ let arr_cards = [];
  s=-1,
  time,
  moved=0,
- count=0;
+ count=0,
+ star = document.querySelector('.stars'),
+ num_star='';
 
  function startTimer(){
      time = setInterval(function(){
@@ -188,27 +190,6 @@ let arr_cards = [];
      t++;
  }
 
- function stopTimer() {
-     console.log('stopped');
-     switch(true){
-         case (t>=0 && t<=22):
-             console.log('Great');
-             break;
-         case (t>22 && t<=36):
-             console.log('Good');
-             break;
-         case (t>36 && t<=54):
-             console.log('Ok');
-             break;
-         case (t>54 && t<=78):
-             console.log('Bah');
-             break;
-         default:
-             console.log('Go out!');
-     }
-     clearInterval(time);
- }
-
  function move(){
      count++;
      console.log(count);
@@ -217,4 +198,37 @@ let arr_cards = [];
          moved ++;
          document.querySelector('#moved').innerHTML = moved;
      }
+ }
+
+ function stopTimer() {
+     console.log('stopped');
+     star.innerHTML = '';
+     switch(true){
+         case (t>=0 && t<=36):
+             for(let i=0; i<3;i++){
+                 num_star += '<li><i class="fa fa-star"></i></li>';
+             }
+             star.insertAdjacentHTML('afterbegin', num_star);
+             break;
+         case (t>36 && t<=54):
+             for(let i=0; i<2;i++){
+                 num_star += '<li><i class="fa fa-star"></i></li>';
+             }
+             num_star += '<li><i class="fa fa-star-o"></i></li>';
+             star.insertAdjacentHTML('afterbegin', num_star);
+             break;
+         case (t>54 && t<=78):
+             num_star += '<li><i class="fa fa-star"></i></li>';
+             for(let i=0; i<2;i++){
+                 num_star += '<li><i class="fa fa-star-o"></i></li>';
+             }
+             star.insertAdjacentHTML('afterbegin', num_star);
+             break;
+         default:
+             for(let i=0; i<3;i++){
+                 num_star += '<li><i class="fa fa-star-o"></i></li>';
+             }
+             star.insertAdjacentHTML('afterbegin', num_star);
+     }
+     clearInterval(time);
  }

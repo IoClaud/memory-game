@@ -152,11 +152,18 @@ h1 {
 .score-panel .stars {
     padding: 0;
     display: inline-block;
-    margin-right: 5px;
+}
+
+.score-panel .stars::after,
+.score-panel .stars::before {
+    display: block;
+    content: '';
+    clear: both;
 }
 
 .score-panel .stars li {
-    display: inline-block;
+    float: left;
+    margin-right: 3px;
 }
 
 .score-panel .restart {

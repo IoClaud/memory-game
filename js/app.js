@@ -166,6 +166,12 @@ function game(){
     for ( let i=0; i<restart.length; i++){
         restart[i].addEventListener('click', starter);
     }
+    restart[0].addEventListener('click', function(){
+        this.classList.add('bounceOut');
+    });
+    restart[0].addEventListener('mouseleave', function(){
+        this.classList.remove('bounceOut');
+    });
     restart[1].addEventListener('click', function(){
         document.querySelector('.modal-container').classList.remove('show');
     });

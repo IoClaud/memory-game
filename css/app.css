@@ -184,6 +184,11 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+
+}
+
+.score-panel .restart:hover {
+    color: red;
 }
 
 /****************************
@@ -325,7 +330,6 @@ h1 {
     left:10px;
   }
 }
-
 .shake {
   animation-name: shake;
 }
@@ -350,7 +354,32 @@ h1 {
     transform: rotateY(0) scale(1);
   }
 }
-
 .jackInTheBox {
   animation-name: jackInTheBox;
+}
+
+@keyframes bounceOut {
+  20% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  50%,
+  55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+.bounceOut {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-name: bounceOut;
+  animation-name: bounceOut;
 }

@@ -166,6 +166,14 @@ h1 {
     margin-right: 3px;
 }
 
+.score-panel .timer {
+    width: 120px;
+}
+
+.score-panel .moves {
+    width: 80px;
+}
+
 .score-panel .restart {
     float: right;
     cursor: pointer;

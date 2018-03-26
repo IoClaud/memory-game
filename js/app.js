@@ -82,7 +82,7 @@ let arr_cards = [];
      let deck = document.querySelector('.deck');
      let writer = '';
      for(let i=0; i<array.length; i++){
-         writer +='<li class="card" data-card="'+array[i].attr+'"><div class="item face"><i class="fa fa-'+array[i].icon+'"></i></div><div class="item cover"></div></li>';
+         writer +='<li class="card" data-card="'+array[i].attr+'"><div class="item animated face"><i class="fa fa-'+array[i].icon+'"></i></div><div class="item cover"></div></li>';
      }
      //console.log(writer);
      deck.insertAdjacentHTML('afterbegin', writer);
@@ -120,11 +120,19 @@ let arr_cards = [];
                          //console.log('match');
                          for (const card of openCard) {
                              card.classList.remove('picked');
-                             card.classList.add('match')
+
+                             card.classList.add('match');
+                             let items = card.children;
+                             items[0].classList.add('matchBgColor');
                              matchedCard.push(this);
                          }
                          openCard = [];
                      } else {
+                            for (const card of openCard){
+                                let items = card.children;
+                                 items[0].classList.add('shake');
+                                 items[0].classList.add('unmatchBgColor');
+                            }
                              //console.log('unmatched');
                              closeAll();
                      }
@@ -137,7 +145,7 @@ let arr_cards = [];
          }
          //let closeCard;
          function closeAll() {
-        let closeCard = setTimeout(close, 500);
+        let closeCard = setTimeout(close, 1000);
          }
 
          function close() {
@@ -146,6 +154,9 @@ let arr_cards = [];
              for (const card of openCard){
                  card.classList.remove('picked');
                  card.classList.remove('open');
+                 let items = card.children;
+                 items[0].classList.remove('shake');
+                 items[0].classList.remove('unmatchBgColor');
              };
              openCard = [];
          }

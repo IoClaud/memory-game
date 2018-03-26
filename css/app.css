@@ -75,8 +75,6 @@ h1 {
     perspective: 500px;
     margin: 10px;
     border-radius: 5px;
-    /*materializecss.com/cards.html*/
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     font-size: 2rem;
 }
 
@@ -96,11 +94,20 @@ h1 {
     backface-visibility: hidden;
     border-radius: 5px;
     cursor: pointer;
+    /*materializecss.com/cards.html*/
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .face {
     transform: rotateY(-180deg);
     background: yellow;
+}
+.face.unmatchBgColor {
+    background: HotPink;
+}
+
+.face.matchBgColor {
+    background: LawnGreen;
 }
 
 .card.picked .face {
@@ -126,4 +133,42 @@ h1 {
 .card.match .cover {
     transform: rotateY(180deg);
     transition: all 0.2s ease-out;
+}
+
+
+/************
+ * Animation
+************/
+
+.animated {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes shake {
+  from,
+  to {
+    left: 0;
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    left:-10px;
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    left:10px;
+  }
+}
+
+.shake {
+  animation-name: shake;
 }

@@ -1,4 +1,10 @@
 /*
+ * Variable declaration
+ */
+let arr_obj = [];
+let arr_cards = [];
+
+/*
  * Create a list that holds all of your cards
  */
  /**
@@ -12,7 +18,6 @@
    this.attr = attr;
  };
 
- let arr_obj = [];
  /**
  * @description the function that create the array that holds the cards.
  * @constructor
@@ -28,6 +33,7 @@
  }
 
  const arr_classi = ['camera-retro', 'audio-description', 'adjust', 'asterisk', 'binoculars', 'at', 'american-sign-language-interpreting', 'bicycle'];
+
  makeObj(arr_classi);
 
 /*
@@ -36,16 +42,25 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
- let arr_cards = [];
+
+ /**
+ * @description the function that take the Card object created and push them twice into the array to create the pairs.
+ * @constructor
+ * @param {array} array - the array that contain the single Card object.
+ */
  function make_cards_array(array){
      for (card of array) {
          arr_cards.push(card);
          arr_cards.push(card);
      }
-
  }
  make_cards_array(arr_obj);
 
+ /**
+ * @description the function that shuffle the elements of the array that we give it.
+ * @constructor
+ * @param {array} array - the array that contain the Card objects.
+ */
  // Shuffle function from http://stackoverflow.com/a/2450976
  function shuffle(array) {
      var currentIndex = array.length, temporaryValue, randomIndex;
@@ -62,14 +77,20 @@
  }
 
  let arr2 = shuffle(arr_cards);
- let deck = document.querySelector('.deck');
- let writer = '';
- for(let i=0; i<arr_cards.length; i++){
-     writer +='<li class="card" data-card="'+arr_cards[i].attr+'"><div class="item face"><i class="fa fa-'+arr_cards[i].icon+'"></i></div><div class="item cover"></div></li>';
- }
- console.log(writer);
- deck.insertAdjacentHTML('afterbegin', writer);
 
+ function drawer(array){
+     let deck = document.querySelector('.deck');
+     let writer = '';
+     for(let i=0; i<array.length; i++){
+         writer +='<li class="card" data-card="'+array[i].attr+'"><div class="item face"><i class="fa fa-'+array[i].icon+'"></i></div><div class="item cover"></div></li>';
+     }
+     //console.log(writer);
+     deck.insertAdjacentHTML('afterbegin', writer);
+ }
+
+ drawer(arr2);
+
+ 
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

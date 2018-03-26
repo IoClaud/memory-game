@@ -179,6 +179,7 @@ let arr_cards = [];
          if(t%60 === 0){
              m++;
              document.getElementById('timerM').innerHTML = m;
+             document.getElementById('modal-timerM').innerHTML = m;
          };
          timer();
      }, 1000);
@@ -194,6 +195,7 @@ let arr_cards = [];
          s = t - 60*m;
      }
      document.getElementById('timerS').innerHTML = s;
+     document.getElementById('modal-timerS').innerHTML = s;
      t++;
  }
 
@@ -204,6 +206,7 @@ let arr_cards = [];
          count = 0;
          moved ++;
          document.querySelector('#moved').innerHTML = moved;
+         document.querySelector('#modal-moved').innerHTML = moved;
      }
  }
 
@@ -248,7 +251,6 @@ let arr_cards = [];
  }
 
  function get_score(){
-     debugger;
      let star2 = document.querySelector('.modal-stars');
      get_star(star2);
  }

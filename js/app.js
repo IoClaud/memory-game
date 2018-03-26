@@ -132,16 +132,21 @@ let arr_cards = [];
                      if(matchedCard.length === 16) {
                          console.log('winner');
                          stopTimer()
-                         document.querySelector('.modal-container').classList.add('show');
-                        document.querySelector('.close-panel').addEventListener('click', function(){
-                            document.querySelector('.modal-container').classList.remove('show');
-                        })
+                         show_panel();
                      }
                  }
              }
          }
         function closeAll() {
         let closeCard = setTimeout(close, 500);
+         }
+
+         function show_panel(){
+             document.querySelector('.modal-container').classList.add('show');
+            document.querySelector('.close-panel').addEventListener('click', function(){
+                document.querySelector('.modal-container').classList.remove('show');
+            });
+            get_score();
          }
 
          function close() {
@@ -166,9 +171,7 @@ let arr_cards = [];
  s=-1,
  time,
  moved=0,
- count=0,
- star = document.querySelector('.stars'),
- num_star='';
+ count=0;
 
  function startTimer(){
      time = setInterval(function(){
@@ -196,7 +199,7 @@ let arr_cards = [];
 
  function move(){
      count++;
-     console.log(count);
+     //console.log(count);
      if(count === 2){
          count = 0;
          moved ++;
@@ -204,8 +207,9 @@ let arr_cards = [];
      }
  }
 
- function stopTimer() {
-     console.log('stopped');
+ function get_star(star){
+     console.log(star);
+     let num_star='';
      star.innerHTML = '';
      switch(true){
          case (t>=0 && t<=36):
@@ -234,5 +238,17 @@ let arr_cards = [];
              }
              star.insertAdjacentHTML('afterbegin', num_star);
      }
+ }
+
+ function stopTimer() {
+     let star1 = document.querySelector('.score-star');
+     console.log('stopped');
+     get_star(star1);
      clearInterval(time);
+ }
+
+ function get_score(){
+     debugger;
+     let star2 = document.querySelector('.modal-stars');
+     get_star(star2);
  }

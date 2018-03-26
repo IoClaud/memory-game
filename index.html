@@ -42,9 +42,43 @@
 
             <section class="modal-container">
                 <div class="modal-panel">
+                    <div class="close-panel">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <header class="modal-panel-heading">
+                        <h2>Congratulations!</h2>
+                        <span>You Win</span>
+                    </header>
 
+                    <div class="modal-content">
+                        <div class="modal-img-container">
+                            <div class="modal-img">
+                                <img src="img/winner.jpg" alt="Winner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-score-panel">
+                        <div class="row">
+                            <ul class="stars">
+                        		<li><i class="fa fa-star"></i></li>
+                        		<li><i class="fa fa-star"></i></li>
+                        		<li><i class="fa fa-star"></i></li>
+                        	</ul>
+
+                            <div class="timer">Timer:
+                                <span id="modal-timerM">0</span> m <span id="modal-timerS">0</span> s
+                            </div>
+
+                            <div class="moves">Moves: <span id="modal-moved">0</span></div>
+                        </div>
+
+                        <div class="play">
+                    		<button class="btn play">Play again</button>
+                    	</div>
+                    </div> <!-- /.modal-score-panel-->
                 </div>
-            </section>
+            </section> <!-- /.modal-container -->
         </div> <!-- /.container-->
 
         <script src="js/app.js"></script>

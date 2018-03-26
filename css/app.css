@@ -103,7 +103,7 @@ h1 {
     background: yellow;
 }
 .face.unmatchBgColor {
-    background: HotPink;
+    background: Plum;
 }
 
 .face.matchBgColor {
@@ -141,8 +141,8 @@ h1 {
 ************/
 
 .animated {
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -171,4 +171,29 @@ h1 {
 
 .shake {
   animation-name: shake;
+}
+
+@keyframes jackInTheBox {
+  from {
+    opacity: 0;
+    transform: rotateY(0) scale(0.1) rotate(45deg);
+    transform-origin: center bottom;
+  }
+
+  50% {
+    transform: rotateY(0) rotate(-15deg);
+  }
+
+  70% {
+    transform: rotateY(0) rotate(5deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+  }
+}
+
+.jackInTheBox {
+  animation-name: jackInTheBox;
 }

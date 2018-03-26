@@ -124,6 +124,7 @@ let arr_cards = [];
                              card.classList.add('match');
                              let items = card.children;
                              items[0].classList.add('matchBgColor');
+                             items[0].classList.add('jackInTheBox');
                              matchedCard.push(this);
                          }
                          openCard = [];
@@ -145,7 +146,7 @@ let arr_cards = [];
          }
          //let closeCard;
          function closeAll() {
-        let closeCard = setTimeout(close, 1000);
+        let closeCard = setTimeout(close, 500);
          }
 
          function close() {

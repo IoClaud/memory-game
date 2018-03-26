@@ -132,11 +132,15 @@ let arr_cards = [];
                      if(matchedCard.length === 16) {
                          console.log('winner');
                          stopTimer()
+                         document.querySelector('.modal-container').classList.add('show');
+                        document.querySelector('.close-panel').addEventListener('click', function(){
+                            document.querySelector('.modal-container').classList.remove('show');
+                        })
                      }
                  }
              }
          }
-         function closeAll() {
+        function closeAll() {
         let closeCard = setTimeout(close, 500);
          }
 

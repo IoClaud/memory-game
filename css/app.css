@@ -135,6 +135,34 @@ h1 {
     transition: all 0.2s ease-out;
 }
 
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    max-width: 580px;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-panel .stars {
+    padding: 0;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.score-panel .stars li {
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
 
 /************
  * Animation

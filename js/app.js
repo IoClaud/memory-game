@@ -254,6 +254,8 @@ function starter(){
      document.getElementById('timerS').innerHTML = s;
      document.getElementById('modal-timerS').innerHTML = s;
      t++;
+     let star1 = document.querySelector('.score-star');
+     get_stars(star1);
  }
 
  function move(){
@@ -305,8 +307,6 @@ function starter(){
  }
 
  function stopTimer() {
-     let star1 = document.querySelector('.score-star');
-     get_stars(star1);
      clearInterval(time);
  }
 

@@ -250,7 +250,7 @@ h1 {
     .score-panel .timer,
     .modal-score-panel .timer {
         order: 2;
-        width: 160px;
+        width: 165px;
     }
     .score-panel .moves,
     .modal-score-panel .moves {

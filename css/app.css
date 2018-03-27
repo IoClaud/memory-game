@@ -16,6 +16,7 @@ body {
     font-family: 'Coda', cursive;
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     color: #444;
+    font-size: 24px;
 }
 
 ol, ul {
@@ -25,8 +26,7 @@ ol, ul {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 3rem 0;
     letter-spacing: 2px;
 }
 
@@ -38,7 +38,11 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    position: relative;
+}
+
+.primary-heading {
+    text-align: center;
+    width: 100%;
 }
 
 /******************************
@@ -144,10 +148,11 @@ h1 {
     text-align: left;
     max-width: 580px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto 3rem;
 }
 
 .score-panel .stars,
@@ -173,12 +178,12 @@ h1 {
 
 .score-panel .timer,
 .modal-score-panel .timer {
-    width: 120px;
+    width: 160px;
 }
 
 .score-panel .moves,
 .modal-score-panel .moves {
-    width: 80px;
+    width: 110px;
 }
 
 .score-panel .restart {
@@ -202,8 +207,8 @@ h1 {
      top: 0;
      left: 0;
      background: rgba(0,0,0,0.5);
-     display: none;
-     transform: scale(0);
+     /*display: none;*/
+     /*transform: scale(0);*/
      transition: transform 0.5s ease;
  }
 

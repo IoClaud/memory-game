@@ -255,8 +255,6 @@ function starter(){
      document.getElementById('timerS').innerHTML = s;
      document.getElementById('modal-timerS').innerHTML = s;
      t++;
-     let star1 = document.querySelector('.score-star');
-     get_stars(star1);
  }
 
  function move(){
@@ -267,6 +265,8 @@ function starter(){
          document.querySelector('#moved').innerHTML = moved;
          document.querySelector('#modal-moved').innerHTML = moved;
      }
+     let star1 = document.querySelector('.score-star');
+     get_stars(star1);
  }
 
  /**
@@ -279,28 +279,22 @@ function starter(){
      // reset the DOM element to rewrite the result
      star.innerHTML = '';
      switch(true){
-         case (t>=0 && t<=36):
+         case (moved>=0 && moved<18):
              for(let i=0; i<3;i++){
                  num_star += '<li><i class="fa fa-star"></i></li>';
              }
              star.insertAdjacentHTML('afterbegin', num_star);
              break;
-         case (t>36 && t<=54):
+         case (moved>=18 && moved<24):
              for(let i=0; i<2;i++){
                  num_star += '<li><i class="fa fa-star"></i></li>';
              }
              num_star += '<li><i class="fa fa-star-o"></i></li>';
              star.insertAdjacentHTML('afterbegin', num_star);
              break;
-         case (t>54 && t<=78):
+         default:
              num_star += '<li><i class="fa fa-star"></i></li>';
              for(let i=0; i<2;i++){
-                 num_star += '<li><i class="fa fa-star-o"></i></li>';
-             }
-             star.insertAdjacentHTML('afterbegin', num_star);
-             break;
-         default:
-             for(let i=0; i<3;i++){
                  num_star += '<li><i class="fa fa-star-o"></i></li>';
              }
              star.insertAdjacentHTML('afterbegin', num_star);

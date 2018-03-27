@@ -150,9 +150,16 @@ h1 {
     width: 100%;
     margin-bottom: 3rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 auto 3rem;
+    flex-wrap: wrap;
+}
+
+.score-panel .stars {
+    order: 1;
+    width: 35%;
+    margin-bottom: 0.5rem;
 }
 
 .score-panel .stars,
@@ -176,20 +183,43 @@ h1 {
     margin-right: 3px;
 }
 
-.score-panel .timer,
-.modal-score-panel .timer {
-    width: 160px;
+.score-panel .timer {
+    order: 3;
+    width: 50%;
 }
 
 .score-panel .moves,
 .modal-score-panel .moves {
-    width: 110px;
+    order: 4;
+    width: 35%;
 }
 
 .score-panel .restart {
-    float: right;
+    order: 2;
+    width: 35%;
     cursor: pointer;
+    text-align: center;
+}
 
+@media screen and (min-width: 768px) {
+    .score-panel .stars,
+    .modal-score-panel .stars {
+        width: 100px;
+    }
+    .score-panel .timer,
+    .modal-score-panel .timer {
+        order: 2;
+        width: 160px;
+    }
+    .score-panel .moves,
+    .modal-score-panel .moves {
+        order: 3;
+        width: 110px;
+    }
+    .score-panel .restart {
+        order: 4;
+        width: 24px;
+    }
 }
 
 .score-panel .restart:hover {
@@ -207,9 +237,9 @@ h1 {
      top: 0;
      left: 0;
      background: rgba(0,0,0,0.5);
-     /*display: none;*/
-     /*transform: scale(0);*/
-     transition: transform 0.5s ease;
+     display: none;
+     transform: scale(0);
+     transition: transform 0.5s ease 0.2s;
  }
 
  .modal-container.show {
@@ -228,12 +258,18 @@ h1 {
      transform: translate(-50%,-50%);
      background: white;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3), 0 0 2px rgba(0, 0, 0, 0.4);
-     padding: 2rem;
+     padding: 3rem 2rem 2rem;
      display: flex;
      flex-wrap: wrap;
      align-items: center;
      flex-direction: column;
      text-align: center;
+ }
+
+ @media screen and (min-width: 768px) {
+     .modal-panel {
+         padding: 2rem;
+     }
  }
 
  .modal-panel .close-panel {
@@ -287,7 +323,15 @@ h1 {
      justify-content: space-around;
      align-items: center;
      width: 100%;
-     margin-bottom: 2.5rem;
+     margin-bottom: 1.5rem;
+     flex-direction: column;
+ }
+
+ @media screen and (min-width: 768px){
+     .modal-score-panel .row {
+         flex-direction: row;
+         margin-bottom: 2.5rem;
+     }
  }
 
  .modal-score-panel .btn {

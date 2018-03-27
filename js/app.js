@@ -1,12 +1,13 @@
 /*
  * Variable declaration
  */
-let arr_obj;
-let arr_cards;
-let deck = document.querySelector('.deck');
-let cards;
-let openCard;
-let t=1,
+let arr_obj,
+arr_cards,
+deck = document.querySelector('.deck'),
+card,
+openCard,
+matchedCard = [],
+t=1,
 m = 0,
 s=-1,
 time,
@@ -84,20 +85,25 @@ count=0;
      return array;
  }
 
-
-
+ /**
+ * @description the function that write the card into the deck.
+ * @constructor
+ * @param {array} array - the array that contain the Card objects.
+ */
  function drawer(array){
      let writer = '';
      for(let i=0; i<array.length; i++){
          writer +='<li class="card" data-card="'+array[i].attr+'"><div class="item animated face"><i class="fa fa-'+array[i].icon+'"></i></div><div class="item cover"></div></li>';
      }
-     //console.log(writer);
      deck.insertAdjacentHTML('afterbegin', writer);
+     // reset Cards for reset function
      cards = [];
      cards = document.querySelectorAll('.card');
-     //console.log (cards);
  }
 
+ /**
+ * @description the function that reset the scores.
+ */
  function reset_scorer(){
      t = 1;
      m = 0;
@@ -112,28 +118,31 @@ count=0;
 
  }
 
- function restart(){
-     stopTimer();
-     reset_scorer();
- }
-
+ /**
+ * @description the function that control the game core.
+ * @constructor
+ */
 function game(){
+    // reset openCard and matchedCard array.
     openCard = [];
-    let matchedCard = [];
+    matchedCard = [];
+    // for every card of array cards, add StartTimer and Move function.
     for ( const card of cards){
         card.addEventListener('click', startTimer);
         card.addEventListener('click', move);
+        // for every card add click event listener that control:
+            // - if the card is matched with another card;
+            // - if the card is open.
         card.addEventListener('click', function(e){
         if(!(this.classList.contains('match'))){
             if(!(this.classList.contains('open'))){
-                //console.log('was close');
                 this.classList.add('picked');
                 this.classList.add('open');
+                // if the card is not matched and not open, push it into the openCard array and control for matching the card with data-card attribute.
                 openCard.push(this);
-                //console.log(openCard);
                 if(openCard.length===2){
                     if(openCard[0].getAttribute('data-card')===openCard[1].getAttribute('data-card')) {
-                        //console.log('match');
+                        // if the card in openCard array is match, block the card in open position and start the animation for match.
                         for (const card of openCard) {
                             card.classList.remove('picked');
                             card.classList.add('match');
@@ -142,18 +151,20 @@ function game(){
                             items[0].classList.add('jackInTheBox');
                             matchedCard.push(this);
                         }
+                        // reset openCard array for new control
                         openCard = [];
                     } else {
+                            // if the card in openCard array is NOT match, start the animation for unmatch...
                            for (const card of openCard){
                                let items = card.children;
                                 items[0].classList.add('shake');
                                 items[0].classList.add('unmatchBgColor');
                            }
-                            //console.log('unmatched');
+                            // ... and close all open cards
                             closeAll();
                     }
                     if(matchedCard.length === 16) {
-                        //console.log('winner');
+                        // if the matchedCard array contain all the card, stop the timer and show panel
                         stopTimer()
                         show_panel();
                     }
@@ -162,6 +173,8 @@ function game(){
         }
     });
     }
+
+    // assign the animation at the restart button
     let restart = document.querySelectorAll('.restart');
     for ( let i=0; i<restart.length; i++){
         restart[i].addEventListener('click', starter);
@@ -207,7 +220,8 @@ function starter(){
     let arr_shuffled = [];
     arr_shuffled = shuffle(arr_cards);
     drawer(arr_shuffled);
-    restart();
+    stopTimer();
+    reset_scorer();
     game();
 }
 
@@ -219,7 +233,6 @@ function starter(){
 
  function startTimer(){
      time = setInterval(function(){
-         //console.log(t);
          if(t%60 === 0){
              m++;
              document.getElementById('timerM').innerHTML = m;
@@ -245,7 +258,6 @@ function starter(){
 
  function move(){
      count++;
-     //console.log(count);
      if(count === 2){
          count = 0;
          moved ++;
@@ -254,9 +266,14 @@ function starter(){
      }
  }
 
- function get_star(star){
-     //console.log(star);
+ /**
+ * @description the function that assign the stars at the end of the game.
+ * @constructor
+ * @param {star} array - the DOM element to append the result.
+ */
+ function get_stars(star){
      let num_star='';
+     // reset the DOM element to rewrite the result
      star.innerHTML = '';
      switch(true){
          case (t>=0 && t<=36):
@@ -289,12 +306,11 @@ function starter(){
 
  function stopTimer() {
      let star1 = document.querySelector('.score-star');
-     //console.log('stopped');
-     get_star(star1);
+     get_stars(star1);
      clearInterval(time);
  }
 
  function get_score(){
      let star2 = document.querySelector('.modal-stars');
-     get_star(star2);
+     get_stars(star2);
  }

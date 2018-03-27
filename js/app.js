@@ -146,6 +146,7 @@ function game(){
                         for (const card of openCard) {
                             card.classList.remove('picked');
                             card.classList.add('match');
+                            card.removeEventListener('click', move);
                             let items = card.children;
                             items[0].classList.add('matchBgColor');
                             items[0].classList.add('jackInTheBox');

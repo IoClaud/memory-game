@@ -40,10 +40,10 @@ h1 {
     max-width: 900px;
     margin: 0 auto;
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 .primary-heading {
@@ -57,7 +57,7 @@ h1 {
 
 .deck-container {
     padding: 1rem;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2bffe9+1,c38af4+100 */
     background: #2bffe9; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #2bffe9 1%, #c38af4 100%); /* FF3.6-15 */
@@ -274,18 +274,18 @@ h1 {
  .modal-container {
      position: absolute;
      width: 100vw;
-     height: 100vh;
+     height: 100%;
      top: 0;
-     left: 0;
+     left: 50%;
      background: rgba(0,0,0,0.5);
      display: none;
-     transform: scale(0);
+     transform: translateX(-50%) scale(0);
      transition: transform 0.5s ease 0.2s;
  }
 
  .modal-container.show {
      display: block;
-     transform: scale(1);
+     transform: translateX(-50%) scale(1);
  }
 
  .modal-panel {

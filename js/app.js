@@ -146,16 +146,16 @@ function game(){
                         for (const card of openCard) {
                             card.classList.remove('picked');
                             card.classList.add('match');
-                            card.removeEventListener('click', move);
+                            //card.removeEventListener('click', move);
                             let items = card.children;
                             items[0].classList.add('matchBgColor');
                             items[0].classList.add('jackInTheBox');
                             matchedCard.push(this);
                         }
-                        // reset openCard array for new control
+                        // reset openCard's array for new control
                         openCard = [];
                     } else {
-                            // if the card in openCard array is NOT match, start the animation for unmatch...
+                            // if the card in openCard's array is NOT match, start the animation for unmatch...
                            for (const card of openCard){
                                let items = card.children;
                                 items[0].classList.add('shake');
@@ -180,12 +180,14 @@ function game(){
     for ( let i=0; i<restart.length; i++){
         restart[i].addEventListener('click', starter);
     }
+    // restart[0] is the ↻ symbol
     restart[0].addEventListener('click', function(){
         this.classList.add('bounceOut');
     });
     restart[0].addEventListener('mouseleave', function(){
         this.classList.remove('bounceOut');
     });
+    // restart[1] is the button 'Play again" on modal panel
     restart[1].addEventListener('click', function(){
         document.querySelector('.modal-container').classList.remove('show');
     });
@@ -258,7 +260,10 @@ function starter(){
  }
 
  function move(){
-     count++;
+     // if the card NOT contain the class 'open', increment the counter for the score 'moves'.
+     if(!(this.classList.contains('open'))){
+         count++;
+     }
      if(count === 2){
          count = 0;
          moved ++;

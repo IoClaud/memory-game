@@ -14,7 +14,7 @@ It is available live [here](https://ioclaud.github.io/memory-game/).
 
 ### Installing
 
-Clone this repository, either by going to the desired directory and running `git clone https://github.com/IoClaud/memory-game`
+Clone this repository, either by going to the desired directory and running `git clone`  `https://github.com/IoClaud/memory-game`
 or by clicking the green "Clone or download" button on the [repository's main page](https://github.com/IoClaud/memory-game)
 and downloading a ZIP.
 When you have the files ready on your computer (unzipped, if necessary), open the `index.html` file.

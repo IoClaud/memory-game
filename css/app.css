@@ -99,6 +99,20 @@ h1 {
     }
 }
 
+@media screen and (min-width: 455px){
+    .card {
+        height: 95px;
+        width: 95px;
+    }
+}
+
+@media screen and (min-width: 535px){
+    .card {
+        height: 115px;
+        width: 115px;
+    }
+}
+
 @media screen and (min-width: 768px){
     .deck-container {
         padding: 2rem;
